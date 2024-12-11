@@ -1,5 +1,5 @@
 {
-    "name": "bgtecnologia/omie-sdk-php",
+    "name": "lucas-simas/omie-sdk-php",
     "version": "3.56.0",
     "description": "OMIE SDK PHP",
     "keywords": [
@@ -17,9 +17,6 @@
         "ext-mbstring": "*"
     },
     "autoload": {
-        "psr-4": { "Cardpay\\" : "lib/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "Cardpay\\test\\" : "test/" }
+        "psr-4": { "OmieSdk\\" : "lib/" }
     }
 }

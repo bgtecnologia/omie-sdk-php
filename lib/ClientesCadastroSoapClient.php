@@ -1,7 +1,10 @@
 <?php
-class CBSoapClient extends SoapClient {
+
+namespace OmieSdk;
+
+class CBSoapClient extends \SoapClient {
     public function __doRequest($request, $location, $action, $version, $one_way = 0) {
-        $xmlRequest = new DOMDocument("1.0");
+        $xmlRequest = new \DOMDocument("1.0");
         $xmlRequest->loadXML($request);
         $header = $xmlRequest->createElement("SOAP-ENV:Header");
         if (defined("OMIE_APP_KEY")) { $header->appendChild( $xmlRequest->createElement("app_key", OMIE_APP_KEY) ); }
