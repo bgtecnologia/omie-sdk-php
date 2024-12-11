@@ -5,6 +5,7 @@ namespace OmieSdk;
 /**
  * @service ClientesCadastroJsonClient
  * @author omie
+ * @since 2024-12-11
  */
 class ClientesCadastroJsonClient {
 	/**
