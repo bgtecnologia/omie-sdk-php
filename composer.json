@@ -1,0 +1,25 @@
+{
+    "name": "lucas-simas/omie-sdk-php",
+    "version": "3.56.0",
+    "description": "OMIE SDK PHP",
+    "keywords": [
+        "omie",
+        "api",
+        "php",
+        "sdk"
+    ],
+    "homepage": "https://developer.omie.com.br/",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.6",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": { "Cardpay\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Cardpay\\test\\" : "test/" }
+    }
+}
