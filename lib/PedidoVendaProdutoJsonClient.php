@@ -6,6 +6,17 @@ namespace OmieSdk;
  * @author omie
  */
 class PedidoVendaProdutoJsonClient {
+
+	/**
+	 * @var string
+	 */
+	private $appKey;
+
+	/**
+	 * @var string
+	 */
+	private $appSecret;
+	
 	/**
 	 * The WSDL URI
 	 *
@@ -32,15 +43,46 @@ class PedidoVendaProdutoJsonClient {
 	 * @param array $param The parameters
 	 * @return mixed The server response
 	 */
-	public static function _Call($method,$param){
-		$call=["call"=>$method,"param"=>$param,"app_key"=>OMIE_APP_KEY,"app_secret"=>OMIE_APP_SECRET];
+
+	public function __construct($appKey, $appSecret) {
+        $this->appKey = $appKey;
+        $this->appSecret = $appSecret;
+    }
+
+	public function _Call($method, $param) {
+		$call = [
+			"call" => $method,
+			"param" => $param,
+			"app_key" => $this->appKey,
+			"app_secret" => $this->appSecret
+		];
+		
 		$url = self::$_EndPoint;
 		$body = json_encode($call);
-		$opts = stream_context_create(["http" => ["method" => "POST", "header" => "Content-Type: application/json", "content" => $body ]]);
-		$res = @file_get_contents($url, false, $opts);
-		if (empty($res))
-			throw new Exception("Error Processing Response: $res", 1);
-		return json_decode($res);
+	
+		$ch = curl_init($url);
+	
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+	
+		$response = curl_exec($ch);
+		
+		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	
+		if (curl_errno($ch)) {
+			throw new Exception("cURL Error: " . curl_error($ch));
+		}
+		
+		curl_close($ch);
+		
+		$retorno = [
+			'response' => json_decode($response),
+			'httpCode' => $httpCode,
+			'status' => $httpCode == 200 ? true : false
+		];
+		return $retorno;
 	}
 
 	/**
