@@ -787,7 +787,7 @@ class vendUpsertResponse{
  * @pw_complex omie_fail
  */
 if (!class_exists('omie_fail')) {
-class omie_fail{
+class omie_fail_vendedor{
 	/**
 	 * Codigo do erro
 	 *

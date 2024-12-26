@@ -251,7 +251,7 @@ class armamento{
  * @pw_element string $cExibirOrdemProd Exibe esta característica na Ordem de Produção e Mapa de Custo (S/N).
  * @pw_complex caracteristicas
  */
-class caracteristicas{
+class caracteristicasProduto{
 	/**
 	 * Código da característica de produto.<BR>(Interno, utilizado apenas na integração via API, não é exibido na tela).<BR>O conteúdo desse campo é o código interno da característica do produto gerado pelo Omie.
 	 *
@@ -308,7 +308,7 @@ class caracteristicas{
  * @pw_element decimal $valor_part Valor de partida
  * @pw_complex combustivel
  */
-class combustivel{
+class combustivelProduto{
 	/**
 	 * Código de Produto da ANP.
 	 *
@@ -483,7 +483,7 @@ class imagens{
  * @pw_element string $cImpAPI Importado pela API (S/N).<BR><BR>Não deve ser informado na Inclusão/Alteração.
  * @pw_complex info
  */
-class info{
+class infoProduto{
 	/**
 	 * Data da Inclusão.<BR>No formato dd/mm/aaaa.<BR><BR>Não deve ser informado na Inclusão/Alteração.
 	 *
@@ -1755,7 +1755,7 @@ class produto_servico_status{
  * @pw_complex omie_fail
  */
 if (!class_exists('omie_fail')) {
-class omie_fail{
+class omie_fail_produto{
 	/**
 	 * Codigo do erro
 	 *
